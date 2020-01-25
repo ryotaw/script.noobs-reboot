@@ -3,6 +3,7 @@
 import xbmc
 import xbmcgui
 import xbmcaddon
+import sys
 import os
 
 # create a class for your addon, we need this to get info about your addon
@@ -15,6 +16,7 @@ CWD = ADDON.getAddonInfo('path') # for kodi 19 and up..
 if (__name__ == '__main__'):
   dialog = xbmcgui.Dialog()
   ret = dialog.select('Choose an OS', ['LibreELEC', 'RetroPie', 'Raspbian'])
+  print('ret = ' + str(ret))
   if ret == 0:
     arg = 10
   elif ret == 1:
@@ -22,9 +24,9 @@ if (__name__ == '__main__'):
   elif ret == 2:
     arg = 8
   else:
-    arg = ''
+    sys.exit()
   
   #reboot!
-  os.system("reboot " + arg)
+  os.system('reboot ' + str(arg))
   
 # the end!
